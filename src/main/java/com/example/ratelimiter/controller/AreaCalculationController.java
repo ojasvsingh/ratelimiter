@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.ratelimiter.model.AreaV1;
+import com.example.ratelimiter.model.RectangleDimensionsV1;
+
 
 @RestController
 public class AreaCalculationController{
@@ -30,7 +33,7 @@ public class AreaCalculationController{
     //endpoint path: http://localhost:8080/api/v1/area/rectangle
 
     @PostMapping("/api/v1/area/rectangle")
-    public ResponseEntity<AreaV1> rectangle(@RequestBody RectangleDimensionsV1 dimensions){
+    public ResponseEntity<?> rectangle(@RequestBody RectangleDimensionsV1 dimensions){
         //try to consume a token
         if(rateLimiterBucket.tryConsume(1)){
             AreaV1 result =  new AreaV1("rectangle", dimensions.getLength() * dimensions.getWidth());

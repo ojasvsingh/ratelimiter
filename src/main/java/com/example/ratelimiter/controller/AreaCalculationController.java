@@ -46,7 +46,7 @@ public class AreaCalculationController{
        Bucket bucket = ipBuckets.computeIfAbsent(userIp, ip ->createNewBucket());
 
         //try to consume a token
-        if(rateLimiterBucket.tryConsume(1)){
+        if(bucket.tryConsume(1)){
             AreaV1 result =  new AreaV1("rectangle", dimensions.getLength() * dimensions.getWidth());
             return ResponseEntity.ok(result);
         }

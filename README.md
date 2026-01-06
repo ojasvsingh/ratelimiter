@@ -14,6 +14,6 @@ Area Calculator API with Rate Limiting
   Features:
   - REST API for calculating area given length and width
   - JSON request/response handling
-  - Token-bucket based rate limiting
-  - Returns HTTP 429 TOO MANY REQUESTS when limit is exceeded
+  - Per-IP Token-bucket based rate limiting
+  - Returns HTTP 429 TOO MANY REQUESTS when limit is exceeded on a certain IP
   - Clean separation of controller, model, and configuration layers
